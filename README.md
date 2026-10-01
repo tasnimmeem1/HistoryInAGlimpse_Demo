@@ -46,7 +46,7 @@ speech still require a local test. A separate Independent_Family_Preview.mp4 acc
 
 ## Inspiration
 
-https://www.davidrumsey.com/blog/2012/3/28/timeline-maps
+https://www.worldhistorycharts.com/adams-synchronological-chart-or-map-of-history/
 
 Individual playback was verified in a running headless JavaFX application:
 pausing only the father left the child moving. All five actors have distinct
