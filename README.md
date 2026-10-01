@@ -34,11 +34,7 @@ text-only date plates remain silent.
 
 All entries have sourced regional geographic context maps. Persia and the long
 Roman-period entry also have explicitly dated territorial snapshots. Other maps
-are geographic locators, not historical territorial reconstructions. See MAPS.md
-for source dates, licenses and limitations. Sound design is documented in SOUNDS.md.
-Windows descriptive narration uses the installed System.Speech voice through
-PowerShell. Ambient loops use Java Sound. No API key, Python, HTML or web app is
-needed by the application.
+are geographic locators, not historical territorial reconstructions.
 
 ## Verification
 
