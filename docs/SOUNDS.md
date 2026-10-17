@@ -18,6 +18,13 @@ have no ambient playback. Scene sounds is disabled for them. Optional descriptiv
 narration remains selectable. Quiet/garden presets are unused by current entries.
 
 ## Hunter-gatherer camp
-camp.wav is a separate synthesized 16-second mono PCM loop containing sparse
-bird chirps and low crackling fire texture. It contains no footsteps, crowd
-voices, bargaining or narration. The existing Narration button is optional.
+
+The former synthesized camp.wav has been removed. Stone Age playback now uses
+`animation-assets/stone-age/stone-age-birds.mp3` in private Supabase Storage,
+served by the backend and played with JavaFX MediaPlayer. Other scenes still use
+bundled Java Sound WAV clips.
+
+Recording title: add the title of the MP3 you downloaded.
+Creator: add the creator name.
+Source URL: add the exact recording page.
+License: add the license shown on that recording page.

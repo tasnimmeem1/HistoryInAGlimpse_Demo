@@ -1,6 +1,6 @@
 # Map sources and accuracy
 
-All 62 entries open a map. The previous six hand-drawn continent polygons have
+The catalog entries open an era map or geographic context view. The previous six hand-drawn continent polygons have
 been replaced with Natural Earth land geometry at 1:50 million. The application
 uses a regional Mercator view sized around each entry's places. Markers identify
 approximate places or regional context, never political boundaries. Modern
