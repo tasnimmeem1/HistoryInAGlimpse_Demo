@@ -47,6 +47,14 @@ final class RecreatedChart {
                     case "PATH" -> {
                         SVGPath p = new SVGPath(); p.setContent(f[4]); p.setFill(paint(f[1]));
                         p.setStroke(paint(f[2])); p.setStrokeWidth(n(f[3])); node = p;
+                        if (f.length > 5) {
+                            int index = Integer.parseInt(f[5]);
+                            p.setCursor(Cursor.HAND);
+                            Tooltip.install(p, new Tooltip("Open " + EventCatalog.EVENTS.get(index).title()));
+                            p.setOnMouseClicked(e -> openStory.accept(index));
+                            p.setOnMouseEntered(e -> p.setStrokeWidth(3));
+                            p.setOnMouseExited(e -> p.setStrokeWidth(n(f[3])));
+                        } else if (f[1].equals("none")) p.setMouseTransparent(true);
                     }
                     case "TEXT" -> {
                         Text t = new Text(f[6]); t.setX(n(f[1])); t.setY(n(f[2]));
@@ -73,6 +81,12 @@ final class RecreatedChart {
                     case "HOTSPOT" -> {
                         int index = Integer.parseInt(f[1]);
                         Rectangle r = new Rectangle(n(f[2]), n(f[3]), n(f[4]), n(f[5]));
+                        String cloudId = CloudEraCatalog.sceneId(EventCatalog.EVENTS.get(index));
+                        if (!cloudId.isBlank() && n(f[4]) == 130 && n(f[5]) == 92) {
+                            CloudEraThumbnail thumbnail = new CloudEraThumbnail(cloudId);
+                            thumbnail.resizeRelocate(n(f[2]), n(f[3]), n(f[4]), n(f[5]));
+                            pane.getChildren().add(thumbnail);
+                        }
                         r.setFill(Color.TRANSPARENT); r.setStroke(Color.TRANSPARENT); r.setCursor(Cursor.HAND);
                         Tooltip.install(r, new Tooltip(f[6]));
                         r.setOnMouseEntered(e -> { r.setStroke(Color.web("#9b482b")); r.setStrokeWidth(2); });

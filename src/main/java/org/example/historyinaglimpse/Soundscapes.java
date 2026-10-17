@@ -8,8 +8,8 @@ final class Soundscapes {
             return new Setting("", "Silent scene: no people or animals");
         return switch (index) {
             case 49,56 -> new Setting("harbor","Harbor water, distant merchants, footsteps and birds");
-            case 11 -> new Setting("camp","Bird calls and a gently crackling campfire");
-            case 13 -> new Setting("nature","Birds, wind and quiet footsteps");
+            case 11 -> new Setting("cloud-birds","Bird chirping from Supabase");
+            case 13 -> new Setting("cloud-farming","Farming ambience");
             case 14,15,16,20,21,32,51,53,59 -> new Setting("market","Market voices, bargaining, footsteps and small clinks");
             case 2,6,26 -> new Setting("horses","Hooves, travel and wind");
             case 4,7,10 -> new Setting("crowd","Crowd voices and passing footsteps");

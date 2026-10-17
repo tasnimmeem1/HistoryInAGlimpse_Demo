@@ -21,6 +21,8 @@ final class EraMap {
     private static final List<double[]> LAND = loadLand();
     static VBox create(HistoricalEvent event, Consumer<String> openReference) {
         int index = EventCatalog.EVENTS.indexOf(event);
+        String sceneId = CloudEraCatalog.sceneId(event);
+        if (!sceneId.isBlank() && !sceneId.equals("sumerian-urban")) return CloudEraMap.create(sceneId);
         String[] setting = setting(index);
         Label heading = label(setting[1] + " · " + event.date());
         heading.setStyle("-fx-font-size: 23px; -fx-font-weight: bold;");
@@ -43,7 +45,15 @@ final class EraMap {
         }
         box.getChildren().add(label("Geographic context · approximate place locations"));
         Canvas canvas = new Canvas(760, 390);
-        box.getChildren().addAll(canvas, label(setting[2]), label("Physical coastlines: Natural Earth, 1:50 million. Present-day geography provides orientation; ancient shorelines may differ. Markers are places or regions, not borders or territorial claims."));
+        javafx.scene.Group mapGroup = new javafx.scene.Group(canvas);
+        javafx.scene.control.ScrollPane mapScroll = new javafx.scene.control.ScrollPane(new javafx.scene.Group(mapGroup));
+        mapScroll.setPannable(true); mapScroll.setPrefViewportHeight(410);
+        javafx.scene.control.Slider zoom = new javafx.scene.control.Slider(1, 4, 1);
+        zoom.setPrefWidth(180);
+        zoom.valueProperty().addListener((o, a, b) -> { mapGroup.setScaleX(b.doubleValue()); mapGroup.setScaleY(b.doubleValue()); });
+        javafx.scene.control.Button reset = new javafx.scene.control.Button("Reset map");
+        reset.setOnAction(e -> { zoom.setValue(1); mapScroll.setHvalue(0); mapScroll.setVvalue(0); });
+        box.getChildren().addAll(new javafx.scene.layout.HBox(12, label("Map zoom"), zoom, reset), mapScroll, label(setting[2]), label("Physical coastlines: Natural Earth, 1:50 million. Present-day geography provides orientation; ancient shorelines may differ. Markers are places or regions, not borders or territorial claims."));
         canvas.widthProperty().bind(box.widthProperty().subtract(40));
         canvas.widthProperty().addListener((o,a,b) -> draw(canvas, setting));
         draw(canvas, setting);
