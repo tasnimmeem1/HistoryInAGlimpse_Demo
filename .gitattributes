@@ -1,0 +1,9 @@
+* text=auto
+*.java text eol=lf
+*.xml text eol=lf
+*.properties text eol=lf
+*.md text eol=lf
+*.sql text eol=lf
+*.tsv text eol=lf whitespace=-blank-at-eol
+*.cmd text eol=crlf
+mvnw text eol=lf

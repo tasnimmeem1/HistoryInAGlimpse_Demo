@@ -1,2 +1,23 @@
-# Project exclude paths
-/target/
+# Build output and IDE settings
+**/target/
+.idea/
+.vscode/
+*.iml
+*.log
+.DS_Store
+Thumbs.db
+
+# Local credentials
+.env
+.env.*
+!.env.example
+**/application-local.properties
+**/application-secrets.properties
+**/application-local.yml
+**/application-local.yaml
+
+# Media uploads and generated delivery packages stay outside the source tree
+*.zip
+SupabaseUploadAssets/
+generated_images/
+preview-frames/
